@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import api from './api'
 
 function App() {
+  const [query, setQuery] = useState('');
+
+  const handleQuery = e => setQuery(e.target.value);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    await api.search.query(query);
+    setQuery('');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <input
+          value={query}
+          onChange={handleQuery}
+          placeholder="First name"
+          type="text"
+          name="firstName"
+          required
+        />
+        <button type="submit" onClick={handleSubmit} disabled={!query}>
+          Search
+        </button>
+      </form>
     </div>
   );
 }
