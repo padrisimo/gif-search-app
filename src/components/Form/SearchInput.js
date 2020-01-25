@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SearchInput = ({ onHandleQuery, query }) => (
   <input
@@ -12,5 +13,10 @@ const SearchInput = ({ onHandleQuery, query }) => (
     required
   />
 );
+
+SearchInput.propTypes = {
+  onHandleQuery: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired
+};
 
 export default SearchInput;

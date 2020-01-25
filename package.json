@@ -9,6 +9,9 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "axios-mock-adapter": "^1.17.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.2",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
@@ -17,9 +20,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "eject": "react-script]s eject",
     "test": "jest",
     "test:watch": "jest --watch --no-cache",
-    "eject": "react-script]s eject"
+    "prettier": "prettier \"src/**/*.{js,jsx,css}\"",
+    "format": "npm run prettier -- --write",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "validate": "npm run prettier -- --list-different && npm run lint"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "babel-polyfill": "^6.26.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^15.0.1",
@@ -47,5 +56,16 @@
     "eslint-plugin-react": "^7.18.0",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,css}": [
+      "npm run format",
+      "npm run lint:fix"
+    ]
   }
 }

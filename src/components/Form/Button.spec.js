@@ -4,7 +4,6 @@ import Button from './Button';
 
 describe('Button', () => {
   const onHandleSubmit = jest.fn();
-  const setValue = jest.fn();
   const defaults = {
     onHandleSubmit,
     query: 'lol',
