@@ -8,6 +8,7 @@ const SearchInput = ({ onHandleQuery, query }) => (
     placeholder="search gif"
     type="text"
     name="query"
+    data-testid="SearchInput"
     required
   />
 );

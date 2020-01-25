@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import api from '../api';
-
+import useApi from '../hooks/useApi'
 import { SearchInput, Button, Form } from './Form';
-import AppWrapper from './AppWrapper'
+import AppWrapper from './AppWrapper';
 
 function App() {
   const [query, setQuery] = useState('');
+  const [, fetch] = useApi();
 
   const handleQuery = e => setQuery(e.target.value);
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await api.search.query(query);
+    await fetch(api.apiUrl(0, query));
     setQuery('');
   };
 

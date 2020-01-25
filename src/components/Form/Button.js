@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = ({title='search gif', onHandleSubmit, query}) => (
-  <button type="submit" onClick={onHandleSubmit} disabled={!query}>
+  <button data-testid="Button" type="submit" onClick={onHandleSubmit} disabled={!query}>
     {title}
   </button>
 );
