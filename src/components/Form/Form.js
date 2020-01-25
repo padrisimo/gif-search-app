@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Form = styled.form`
-    background: tomato;
+  background: tomato;
 `;
 
 export default Form;

@@ -12,5 +12,7 @@ code {
     monospace;
 }
 
-input, button { outline: none; }
-
+input,
+button {
+  outline: none;
+}
