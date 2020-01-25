@@ -57,15 +57,19 @@
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint . --fix",
+      "git add"
+    ],
+    "src/**/*.scss": [
+      "stylelint --syntax scss --fix",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,css}": [
-      "npm run format",
-      "npm run lint:fix"
-    ]
   }
 }
