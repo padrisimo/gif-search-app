@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import {
-  getComponentWrapperWidth,
   getDefaultMasonryConfig,
   getMasonryConfigExceptLast,
   getMediaBreakpoints
@@ -11,7 +10,7 @@ import { masonryConfig, gifPerPage } from '../constants';
 import api from '../api';
 import useApi from '../hooks/useApi';
 import useMedia from '../hooks/useMedia';
-import { SearchInput, Button, Form } from './Form';
+import { SearchInput, Button, Form, HeaderHolder } from './Form';
 import AppWrapper from './AppWrapper';
 import ImageItem from './ImageItem';
 import BrickLayout from './BrickLayout';
@@ -45,20 +44,21 @@ function App() {
   );
 
   return (
-    <AppWrapper width={getComponentWrapperWidth(masonryConfigMatchMedia)}>
-      <Form>
+    <>
+    <Form>
         <SearchInput onHandleQuery={handleQuery} query={query} />
         <Button title="Search" query={query} onHandleSubmit={handleSubmit} />
       </Form>
-      <div style={{height: 90}}/>
+      <AppWrapper>
+      <HeaderHolder />
       <InfiniteScroll
         pageStart={0}
-        loadMore={page => fetch(api.apiUrl(page * gifPerPage), query)}
+        loadMore={page => query && fetch(api.apiUrl(page * gifPerPage), query)}
         hasMore={!loading && !lastPage}
         useWindow
         initialLoad={false}
         loader={
-          !firstRun && (
+          (!firstRun && query) && (
             <div key="loading" style={{ color: 'white' }}>
               loading...
             </div>
@@ -80,6 +80,7 @@ function App() {
         )}
       </InfiniteScroll>
     </AppWrapper>
+    </>
   );
 }
 

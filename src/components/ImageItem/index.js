@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const ImageButton = styled.button`
-  background: #ccc;
+  background: tomato;
   color: inherit;
   border: none;
   padding: 0;
@@ -14,10 +14,11 @@ const ImageButton = styled.button`
   height: ${({ size, item }) =>
     (item.images.fixed_width_downsampled.height * size) /
     item.images.fixed_width_downsampled.width}px;
-
+  overflow: hidden;
   &:focus {
     opacity: 0.6;
   }
+
 `;
 
 const Img = styled.img`
