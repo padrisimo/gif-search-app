@@ -5,6 +5,6 @@ export const masonryConfig = [
   { mq: '600px', columns: 2, imageWidth: 280, gutter: 3 },
   { mq: '700px', columns: 3, imageWidth: 200, gutter: 5 },
   { mq: '900px', columns: 4, imageWidth: 180, gutter: 5 },
-  { mq: '1280px', columns: 4, imageWidth: 200, gutter: 9 }
+  { mq: '1280px', columns: 6, imageWidth: 200, gutter: 9 }
 ];
 export const gifPerPage = 40;

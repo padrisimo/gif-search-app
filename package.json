@@ -2,6 +2,7 @@
   "name": "giphapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://padrisimo.github.io/gif-search-app/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -29,7 +30,9 @@
     "format": "npm run prettier -- --write",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
-    "validate": "npm run prettier -- --list-different && npm run lint"
+    "validate": "npm run prettier -- --list-different && npm run lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -56,6 +59,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
+    "gh-pages": "^2.2.0",
     "match-media-mock": "^0.1.1",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.12.0"
