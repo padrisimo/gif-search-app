@@ -4,7 +4,7 @@
 ### install
  `> yarn`
 
-### statrt
+### start
  `> yarn start`
 
 ### test

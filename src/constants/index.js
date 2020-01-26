@@ -8,3 +8,4 @@ export const masonryConfig = [
   { mq: '1280px', columns: 6, imageWidth: 200, gutter: 9 }
 ];
 export const gifPerPage = 40;
+export const paitItBlack = '#121212';
