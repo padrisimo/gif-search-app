@@ -50,7 +50,7 @@ function App() {
         <SearchInput onHandleQuery={handleQuery} query={query} />
         <Button title="Search" query={query} onHandleSubmit={handleSubmit} />
       </Form>
-
+      <div style={{height: 90}}/>
       <InfiniteScroll
         pageStart={0}
         loadMore={page => fetch(api.apiUrl(page * gifPerPage), query)}

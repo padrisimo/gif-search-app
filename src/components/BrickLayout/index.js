@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { useRef, useEffect, Children } from 'react';
 import Bricks from 'bricks.js';
 import PropTypes from 'prop-types';
@@ -29,7 +30,7 @@ const BrickLayout = ({ children, sizes }) => {
 
 BrickLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  sizes: PropTypes.shape({}).isRequired
+  sizes: PropTypes.instanceOf(Array).isRequired
 };
 
 export default BrickLayout;
