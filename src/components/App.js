@@ -11,7 +11,7 @@ import { masonryConfig, gifPerPage, paitItBlack } from '../constants';
 import api from '../api';
 import useApi from '../hooks/useApi';
 import useMedia from '../hooks/useMedia';
-import { SearchInput, Button, Form, HeaderHolder } from './Form';
+import { SearchInput, Button, Form, HeaderHolder, WhiteText } from './Form';
 import AppWrapper from './AppWrapper';
 import ImageItem from './ImageItem';
 import BrickLayout from './BrickLayout';
@@ -24,7 +24,7 @@ function App() {
   const [firstRun, setFirstRun] = useState(true);
   const [visible, setVisible] = useState(false);
   const isFirstRun = useRef(true);
-  const [{ data, loading, lastPage }, fetch] = useApi();
+  const [{ data, loading, error, lastPage }, fetch] = useApi();
 
   const handleQuery = e => setQuery(e.target.value);
 
@@ -73,11 +73,12 @@ function App() {
             fluid
           >
             <HeaderHolder />
-            <Close handleClose={() => setVisible(false)}/>
+            <Close handleClose={() => setVisible(false)} />
             <ExpandedImage gif={gif} />
           </Dock>
         )}
         <HeaderHolder />
+        {error && <WhiteText>omg! {error}</WhiteText>}
         <InfiniteScroll
           pageStart={0}
           loadMore={page =>
@@ -89,13 +90,13 @@ function App() {
           loader={
             !firstRun &&
             query && (
-              <div key="loading" style={{ color: 'white' }}>
+              <WhiteText key="loading">
                 loading...
-              </div>
+              </WhiteText>
             )
           }
         >
-          {data.length > 0 && (
+          {data.length > 0 ? (
             <BrickLayout sizes={masonryConfig}>
               {data.map(item => (
                 <ImageItem
@@ -107,6 +108,8 @@ function App() {
                 />
               ))}
             </BrickLayout>
+          ) : (
+            <WhiteText>Ups! nothing found!</WhiteText>
           )}
         </InfiniteScroll>
       </AppWrapper>
